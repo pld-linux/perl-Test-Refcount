@@ -6,20 +6,20 @@
 %define	pdir	Test
 %define	pnam	Refcount
 Summary:	Test::Refcount - assert reference counts on objects
-#Summary(pl.UTF-8):
+Summary(pl.UTF-8):	Test::Refcount - testowanie liczników odwołań dla obiektów
 Name:		perl-Test-Refcount
 Version:	0.06
 Release:	1
 # same as perl
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
-Source0:	http://search.cpan.org/CPAN/authors/id/P/PE/PEVANS/Test-Refcount-%{version}.tar.gz
+Source0:	http://www.cpan.org/modules/by-module/Test/PEVANS/Test-Refcount-%{version}.tar.gz
 # Source0-md5:	ea68fc8375bc36f49e2620356efde850
 URL:		http://search.cpan.org/dist/Test-Refcount/
 BuildRequires:	perl-devel >= 1:5.8.0
 BuildRequires:	rpm-perlprov >= 4.1-13
 %if %{with tests}
-BuildRequires:	perl(Devel::FindRef)
+BuildRequires:	perl-Devel-FindRef
 BuildRequires:	perl-Devel-Refcount
 %endif
 BuildArch:	noarch
@@ -39,11 +39,24 @@ holds for an object class, so as to be polite to its callers.
 
 If the assertion fails; that is, if the actual reference count is
 different to what was expected, a trace of references to the object is
-printed, using Marc Lehmann's Devel::FindRef module. See the examples
-below for more information.
+printed, using Marc Lehmann's Devel::FindRef module.
 
-# %description -l pl.UTF-8
-# TODO
+%description -l pl.UTF-8
+Perlowy odśmiecacz (garbage collector) używa prostego zliczania
+referencji podczas wykonywania programu. Oznacza to, że cykle lub
+nie osłabione referencje w innych częściach kodu mogą utrzymać obiekt
+na czas dłuższy, niż było to zamierzone. Aby pomóc w uniknięciu tego
+problemu, liczba referencji nowego obiektu z konstruktora jego klasy
+powinna wynosić 1. W ten sposób wywołujący może wiedzieć, że obiekt
+będzie poprawnie zniszczony, kiedy pozbędzie się wszystkich
+referencji.
+
+Ten moduł udostępnia dwie funkcje testujące pomagające w upewnieniu
+się co do tej właściwości klasy obiektu.
+
+Jeśli zapewnienie nie powiedzie się, tzn. licznik referencji jest
+różny od oczekiwanej wartości, wypisywany jest ślad referencji do
+obiektu przy użyciu modułu Devel::FindRef Marca Lehmanna.
 
 %prep
 %setup -q -n %{pdir}-%{pnam}-%{version}
@@ -67,5 +80,5 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc Changes README
-%{perl_vendorlib}/Test/*.pm
-%{_mandir}/man3/*
+%{perl_vendorlib}/Test/Refcount.pm
+%{_mandir}/man3/Test::Refcount.3pm*
