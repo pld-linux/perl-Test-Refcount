@@ -8,13 +8,13 @@
 Summary:	Test::Refcount - assert reference counts on objects
 Summary(pl.UTF-8):	Test::Refcount - testowanie liczników odwołań dla obiektów
 Name:		perl-Test-Refcount
-Version:	0.06
+Version:	0.07
 Release:	1
 # same as perl
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
 Source0:	http://www.cpan.org/modules/by-module/Test/PEVANS/Test-Refcount-%{version}.tar.gz
-# Source0-md5:	ea68fc8375bc36f49e2620356efde850
+# Source0-md5:	0a78c2f25e91c27baf0f71118a970245
 URL:		http://search.cpan.org/dist/Test-Refcount/
 BuildRequires:	perl-devel >= 1:5.8.0
 BuildRequires:	rpm-perlprov >= 4.1-13
