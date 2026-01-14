@@ -8,7 +8,7 @@ Summary:	Test::Refcount - assert reference counts on objects
 Summary(pl.UTF-8):	Test::Refcount - testowanie liczników odwołań dla obiektów
 Name:		perl-Test-Refcount
 Version:	0.07
-Release:	1
+Release:	2
 # same as perl
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
